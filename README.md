@@ -1,2 +1,2 @@
 # sample
-teft sample
+test sample
